@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trivia</title>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+      }
+      header {
+        min-height: 15vh;
+        text-align: center;
+        margin: 0px;
+        padding: 0px;
+        background-color: #477bff;
+      }
+      header > h1 {
+        padding-top: 5vh;
+        color: white;
+      }
+      main {
+        margin: 3vw;
+      }
+      button {
+        padding: 0.5em;
+        border: none;
+        background-color: #87d2d6;
+        border-radius: 5px;
+        font-weight: bold;
+        outline-style: none;
+      }
+      input {
+        padding: 0.3em;
+        outline-style: none;
+      }
+      #result {
+        height: 2vh;
+      }
+      #check {
+        height: 7vh;
+      }
+      footer {
+        height: 4.5em;
+        background-color: lightgrey;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Trivia!</h1>
+    </header>
+    <main>
+      <h2>Part 1: Multiple Choice</h2>
+      <br />
+      <hr style="color: lightgrey" />
+      <br />
+      <h3>What is the approximate ratio of people to sheep in New Zealand?</h3>
+      <br />
+      <h2 id="result"></h2>
+      <br />
+      <br />
+      <button id="button1">6 people per 1 sheep</button>
+      <button id="button2">3 people per 1 sheep</button>
+      <button id="button3">1 people per 1 sheep</button>
+      <button id="button4">1 people per 3 sheep</button>
+      <button id="button5">1 people per 6 sheep</button>
+      <br />
+      <br />
+      <br />
+      <h2>Part 2: Free Response</h2>
+      <br />
+      <hr style="color: lightgrey" />
+      <br />
+      <h3>
+        In which country is it illegal to own only one guinea pig, as a lone
+        guinea pig might get lonely?
+      </h3>
+      <br />
+      <h2 id="check"></h2>
+      <input id="userInput" type="text" />
+      <button id="button6">Check Answer</button>
+    </main>
+    <footer></footer>
+    <script>
+      //---------------------------> part 1 START<-------------------
+
+      const b1 = document.querySelector("#button1");
+      const b2 = document.querySelector("#button2");
+      const b3 = document.querySelector("#button3");
+      const b4 = document.querySelector("#button4");
+      const b5 = document.querySelector("#button5");
+      const result = document.querySelector("#result");
+
+      b1.addEventListener("click", button1);
+      b2.addEventListener("click", button2);
+      b3.addEventListener("click", button3);
+      b4.addEventListener("click", button4);
+      b5.addEventListener("click", button5);
+
+      const correct = () => (result.innerHTML = "Correct!");
+      const inCorrect = () => (result.innerHTML = "Incorrect!");
+
+      const skyBlue = (input) => {
+        return (input.style.backgroundColor = "#87D2D6");
+      };
+
+      function button1() {
+        b1.style.backgroundColor = "#5FA55A"; //button1
+        skyBlue(b2);
+        skyBlue(b3);
+        skyBlue(b4);
+        skyBlue(b5);
+        correct();
+        result.style.color = "green";
+      }
+      function button2() {
+        b2.style.backgroundColor = "#FA5457"; //button2
+
+        skyBlue(b1);
+        skyBlue(b3);
+        skyBlue(b4);
+        skyBlue(b5);
+        inCorrect();
+        result.style.color = "red";
+      }
+      function button3() {
+        b3.style.backgroundColor = "#FA5457"; //button3
+
+        skyBlue(b1);
+        skyBlue(b2);
+        skyBlue(b4);
+        skyBlue(b5);
+        inCorrect();
+        result.style.color = "red";
+      }
+      function button4() {
+        b4.style.backgroundColor = "#FA5457"; //button4
+
+        skyBlue(b1);
+        skyBlue(b2);
+        skyBlue(b3);
+        skyBlue(b5);
+        inCorrect();
+        result.style.color = "red";
+      }
+      function button5() {
+        b5.style.backgroundColor = "#FA5457"; //button5
+
+        skyBlue(b1);
+        skyBlue(b2);
+        skyBlue(b3);
+        skyBlue(b4);
+        inCorrect();
+        result.style.color = "red";
+      }
+
+      //---------------------------> part 2 START <-------------------
+      const button6 = document.querySelector("#button6");
+      const check = document.querySelector("#check");
+      const userInput = document.querySelector("#userInput");
+
+      button6.addEventListener("click", handleClick);
+      function handleClick() {
+        if (userInput.value.toUpperCase() === "SWITZERLAND") {
+          check.innerHTML = "Correct!";
+          check.style.color = "green";
+        } else if (userInput.value === "") {
+          check.innerHTML = "";
+        } else {
+          check.innerHTML = "Incorrect!";
+          check.style.color = "red";
+        }
+      }
+    </script>
+  </body>
+</html>
